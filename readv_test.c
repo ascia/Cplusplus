@@ -5,7 +5,7 @@
 #include <sys/uio.h>  
   
 int main(){  
-    char foo[47],bar[50],baz[48];  
+    char foo[48],bar[51],baz[49];  
     struct iovec iov[3];  
     ssize_t nr;  
     int fd,i;  

@@ -18,18 +18,16 @@ int main(int argc, char** argv)
     while (1)
     {
         int ret = msgrcv(msqid, rcvbuf, MSGS_LEN, MSG_TYPE, IPC_NOWAIT);
-        do_statistic();
-        if (ENOMSG == errno || EAGAIN == errno)
-        {
+        //do_statistic();
+        if (ENOMSG == errno || EAGAIN == errno){
             usleep(12000);
             continue;
         }
 
-        if (ret == -1)
-        {
-//            printf("msgrcv failed!\n");
+        if (ret == -1){
+            printf("msgrcv failed!\n");
         } else{
-	    //do_ststistic();
+	    do_statistic();
 	    printf("msgrcv success!!!\n");
 	}
         usleep(12030*10);
@@ -42,5 +40,5 @@ void do_statistic(void)
 {
     static int msgcount = 0;
     msgcount++;
-   // printf("do recived msg %d times.\n", msgcount);
+    printf("do recived msg %d times.\n", msgcount);
 }
